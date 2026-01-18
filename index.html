@@ -129,7 +129,7 @@ button:hover {
 </div>
 
 <script>
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1461476549688688680/XOhZqQke8f4_x07k-OWYPGRndjkRTGV2jyJCGpnoLE8gMcGzbIMQZQRSEtbt4_hZUZf_";
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1462423743782715619/TqIGjmQXDD-H12-vXw7GTSkQXFJ-PcBINisNJOYKd6AaQQHhHbV7zjfER_lWSonkYZZT";
 
 const POSTES = [
   "PDG",
@@ -212,29 +212,6 @@ function calculerTotal() {
   document.getElementById("totals").innerText =
     "Total des ventes : " + total.toLocaleString() + " $";
 }
-
-/* ================== EXPORT EXCEL ================== */
-function exportExcel() {
-  let csv = "Nom;Poste;Type;Montant;Jours;Total\n";
-
-  document.querySelectorAll("#table-body tr").forEach(tr => {
-    const nom = tr.cells[0].querySelector("input").value;
-    const poste = tr.cells[1].querySelector("select").value;
-    const type = tr.cells[2].querySelector("select").value;
-    const montant = tr.cells[3].querySelector("input").value;
-    const jours = tr.cells[4].querySelector("input").value || 1;
-    const total = type === "location" ? montant * jours : montant;
-
-    csv += `${nom};${poste};${type};${montant};${jours};${total}\n`;
-  });
-
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "dynasty8_ventes.csv";
-  link.click();
-}
-
 /* ================== DISCORD ================== */
 async function envoyerTout() {
   const rows = document.querySelectorAll("#table-body tr");
@@ -292,4 +269,5 @@ window.onload = ajouterLigne;
 
 </body>
 </html>
+
 
